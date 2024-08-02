@@ -12,8 +12,8 @@ z_sample = np.random.uniform(0, 1, N_samples)
 for i in range(1, 100_000):
 
     x = np.random.choice(x_sample, N_random_samples)
-    y = np.random.choice(x_sample, N_random_samples)
-    z = np.random.choice(x_sample, N_random_samples)
+    y = np.random.choice(y_sample, N_random_samples)
+    z = np.random.choice(z_sample, N_random_samples)
 
     func = np.exp(-(x**2 + y**2 + z**2)) * np.sin(x*y) * np.cos(z) #Modelling
 
