@@ -11,9 +11,9 @@ nodes = 20
 
 # Initialization 
 
-dx = length / nodes
+dx = length / (nodes-1)
 dt = 0.5 * dx**2 / a
-t_nodes = int(time/dt)
+t_nodes = int(time/dt) + 1
 
 u = np.zeros(nodes) + 20 # Plate is initially as 20 degres C
 
