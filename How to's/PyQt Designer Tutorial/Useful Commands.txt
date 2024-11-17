@@ -1,0 +1,6 @@
+To install packages in python version 3.X:
+>> py -3.X -m pip install replace_name_package
+
+
+To convert a .ui file to a .py file: 
+>> pyuic6 -x file.ui -o output_file.py
