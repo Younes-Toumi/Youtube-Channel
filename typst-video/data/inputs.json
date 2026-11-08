@@ -1,0 +1,14 @@
+{
+    "diffusivity_mm2_s": 10,
+    "length_mm": 10,
+    "height_mm": 10,
+    "space_step_mm": 0.2,
+    "total_time_s": 4,
+    "initial_temperature_C": 25.0,
+    "boundary_temperature_C": {
+        "left": 100.0,
+        "top": 100.0,
+        "right": 100.0,
+        "bottom": 100.0
+    }
+}
