@@ -35,7 +35,3 @@ If the model name differs on your machine, check `ollama list` and update `MODEL
 ## Notes
 
 `qwen3:8b` supports switching reasoning off with `think=False`. Thinking-only variants such as the current `qwen3:4b` tag ignore it, and their reasoning ends up in the answer text, so use `qwen3:8b` or an `-instruct` variant.
-
-## Next
-
-Part 2 gives the model tools (a projectile solver with air drag), wraps everything in an agent loop, and adds plotting.
