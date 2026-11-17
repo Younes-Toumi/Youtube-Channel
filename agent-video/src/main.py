@@ -1,20 +1,17 @@
 import ollama
 import json
 from pathlib import Path
+from agent_tools import multiply, save_result, projectile_simulation, plot_trajectories
+from agent_utils import load_history, save_history
 
 MODEL = "qwen3:8b"
-
-
 PATH_HISTORY = Path("histories/history.json")
 
-def load_history():
-    if PATH_HISTORY.exists():
-        return json.loads(PATH_HISTORY.read_text())
 
-    return []
+TOOLS = {
+    func.__name__: func for func in [multiply, save_result, projectile_simulation, plot_trajectories]
+}
 
-def save_history(history):
-    PATH_HISTORY.write_text(json.dumps(history, indent=4, ensure_ascii=False))  
 
 def main():
 
@@ -27,15 +24,46 @@ def main():
         if user_input == "/bye":
             break
 
+        if user_input == "/clear":
+            messages = []
+            save_history(messages)
+
+            print("clear contenxt ... \n")
+            continue
+
         messages.append({"role":"user", "content": user_input})
 
-        response = ollama.chat(
-            model=MODEL,
-            messages=messages,
-            think=False
-        )
+        for i in range(5): 
+            response = ollama.chat(
+                model=MODEL,
+                messages=messages,
+                think=False,
+                tools=list(TOOLS.values()),
+                options={"temperature": 0}
+            )
 
-        messages.append(response.message.model_dump(exclude_none=True))
+            messages.append(response.message.model_dump(exclude_none=True))
+
+            if not response.message.tool_calls:
+                break
+                
+            for tool in response.message.tool_calls or []:
+                name = tool.function.name
+                arguments = tool.function.arguments
+
+                print("name: ", name)
+                print("arguments: ", arguments)
+
+                try:
+                    result = TOOLS[name](**arguments)
+                except Exception as e:
+                    result = {"error": f"{type(e).__name__}: {e}"}
+
+                print("result: ", result)
+
+                messages.append(
+                    {"role": "tool", "tool_name": name, "content": json.dumps(result)}
+                )
 
         print(f"\nassistant:\n{response.message.content}\n")
         save_history(messages)
