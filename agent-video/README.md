@@ -1,8 +1,9 @@
-# mini-agent, Part 1: a local LLM from Python
+# mini-agent, A local Engineering Agent from Python and Ollama
 
-Code for Part 1 of the Younes Lab series on building a small engineering agent from scratch. This part runs a language model locally with Ollama and talks to it from Python. Tool calling and the agent loop follow in Part 2.
+Code for Part 1 and 2 of the Younes Lab series on building a small engineering agent from scratch. This part runs a language model locally with Ollama and talks to it from Python.
 
-🎥 Video: https://youtu.be/nn2BSO19iOk
+🎥 Video Part 1: [link](https://youtu.be/nn2BSO19iOk)
+🎥 Video Part 2: [link](https://youtu.be/D-xk3d0v7bk)
 
 ## What you'll learn
 
