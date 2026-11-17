@@ -3,6 +3,7 @@
 Code for Part 1 and 2 of the Younes Lab series on building a small engineering agent from scratch. This part runs a language model locally with Ollama and talks to it from Python.
 
 🎥 Video Part 1: [link](https://youtu.be/nn2BSO19iOk)
+
 🎥 Video Part 2: [link](https://youtu.be/D-xk3d0v7bk)
 
 ## What you'll learn
